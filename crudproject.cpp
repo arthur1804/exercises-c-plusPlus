@@ -7,6 +7,8 @@ struct crud{
 };
 
 int main(){
+    crud crud1;
+    int i;
 
     cout << "fazendo...";
 }
