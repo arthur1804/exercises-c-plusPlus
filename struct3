@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*
+Uma empresa tem para cada um dos seus 200 funcionários uma ficha contendo o nome,
+número de horas trabalhadas e o número de dependentes. Considerando que:
+- A empresa paga 12 reais por hora e 40 reais por dependentes;
+- Sobre o salário são feitos descontos de 8,5% para o INSS e 5% para IR.
+Elabore um algoritmo que declare o registro do funcionário, e leia seus dados enquanto o
+usuário desejar cadastrar (não permitindo o cadastro de mais de 200 funcionários). Após a
+leitura, escreva o nome, salário bruto, os valores descontados para cada tipo de imposto e
+qual o salário líquido de cada um dos funcionários que foram cadastrados
+*/
+
+struct tfuncionario{
+  string nome;
+  int horas;
+  int dependentes;
+};
+
+int main(){
+  tfuncionario funcionarios[200];
+  float sbruto;
+  int i, qntd;
+
+  do{
+      cout << "quantos funcionarios deseja cadastrar? " << endl;
+      cin >> qntd;
+
+  }while(qntd>200);
+
+  for(i=0;i<qntd;i++){
+  getchar();
+  cout << "\n\tCADASTRO DE FUNCIONARIOS: ";
+  cout << "\n\tinforme seu nome: ";
+  getline(cin,funcionarios[i].nome);
+  cout << "\n\tinforme o numero de horas trabalhadas: ";
+  cin >> funcionarios[i].horas;
+  cin.ignore();
+  cout << "\n\tinforme o numero de dependentes: ";
+  cin >> funcionarios[i].dependentes;
+  cin.ignore();
+    
+  }
+
+  for(i=0;i<qntd;i++){
+    cout << "nome: " << funcionarios[i].nome;
+    sbruto =  ((funcionarios[i].horas*12)+(40*funcionarios[i].dependentes));
+    cout << "salario bruto: " << sbruto;
+    cout << "valor descontado para o INSS: " << sbruto*0.085;
+    cout << "valor descontado para o IR: " << sbruto*0.05;
+    cout << "salario liquido: " << sbruto - ((sbruto*0.05) + (sbruto*0.085));
+  }
+  
+  return 0;
+}
