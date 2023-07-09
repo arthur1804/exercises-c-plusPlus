@@ -1,0 +1,92 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*
+Elabore um algoritmo que
+- Crie a estrutura tAnimal: Registro tAnimal:
+nome: string
+raca: string
+idade: int
+- Declare um vetor Animais (5 posições de tAnimal) e cadastre 8 animais;
+- Verifique e escreva o nome do animal mais velho;
+- Pergunte ao usuário se deseja consultar os animais cadastrados solicitando uma raça para
+a busca. Se ele quiser, leia uma raça e, se existir animal da raça procurada, informe seus
+dados (nome e idade); 
+*/
+
+struct tanimal{
+  string nome;
+  string raca;
+  int idade;
+};
+
+int main() {
+  tanimal animal[5];
+  int i, qntd, velho=0;
+  string nomedele, racaBusca;
+  char sim;
+ 
+
+   do {
+    cout << "quantos animais deseja cadastrar? ";
+    cin >> qntd;
+
+    if (qntd <= 0 || qntd > 8) {
+      cout << "Digite um valor válido (entre 1 e 10)." << endl;
+    }
+  } while (qntd <= 0 || qntd > 8);
+  
+  for(i=0;i<qntd;i++){
+    getchar();
+    cout << "\n\tANIMAL " << i+1;
+    cout << "\n\tinforme o nome: ";
+    getline(cin,animal[i].nome); 
+    
+    cout << "\n\tinforme a raca: ";
+    getline(cin,animal[i].raca);
+    
+    cout << "\n\tinforme a idade: ";
+    cin >> animal[i].idade;
+    cin.ignore();
+
+
+    if(animal[i].idade > velho){
+      velho = animal[i].idade;
+      nomedele = animal[i].nome;
+    }
+  }
+
+  cout << "animal mais velho: " << velho << "e seu nome: " << nomedele << endl;
+  getchar();
+
+
+   cout << "Deseja consultar os animais cadastrados? Se sim, solicite uma raça para a busca (s ou n): ";
+  cin >> sim;
+
+  if (sim == 's' || sim == 'S') {
+    cout << "Digite a raça: ";
+    cin.ignore(); // Limpar o caractere de nova linha residual
+    getline(cin, racaBusca);
+
+
+    bool encontrado;
+
+    for (i = 0; i < 5; i++) {
+      if (animal[i].raca == racaBusca) {
+        cout << "Nome: " << animal[i].nome << ", Idade: " << animal[i].idade << endl;
+        encontrado = true;
+      }
+    }
+
+    if (encontrado=false) {
+    cout << "Nenhum animal encontrado com a raça informada." << endl;
+    }
+  } else if (sim == 'n' || sim == 'N') {
+    cout << "Finalizando o código..." << endl;
+  } else {
+  }
+
+  
+}
