@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+//Elabore um algoritmo que leia um vetor de 20 posições de inteiros e verifique se ele é um palíndromo, ou seja, se a sua leitura em qualquer direção é a mesma. Exemplo: O vetor 1 2 3 4 5 6 6 5 4 3 2 1 é um palíndromo, pois se for lido de frente para trás ou de trás para frente terá exatamente os mesmos elementos.
+
+int main(){
+ int vetor[20], i;
+  bool palindromo = true;
+
+  for (i = 0; i < 20; i++) {
+    cout << "Digite o valor " << i + 1 << ": ";
+    cin >> vetor[i];
+  }
+
+  for (i = 0; i < 10 ; i++) {
+    if (vetor[i] != vetor[19 - i]) {
+      palindromo = false;
+      break;
+    }
+  }
+
+  if (palindromo) {
+    cout << "O conjunto é um palíndromo." << endl;
+  } else {
+    cout << "O conjunto não é um palíndromo." << endl;
+  }
+
+  return 0;
+}
