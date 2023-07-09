@@ -1,0 +1,211 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int idade, escolha, calculo, valorcompra, idade4;
+  float x, frequencia, nota, desconto, valortotal=0;
+  char sexo, pos1 = '1', pos2 = '2', pos3 = '3', pos4 = '4', pos5 = '5', pos6 = '6', pos7 = '7', pos8 = '8', pos9 = '9', player = 'x';
+  bool gameover = false;
+  
+  cout << "\t\t_______________";
+  cout << "\n\t\tMENU PRINCIPAL";
+  
+  
+  cout << "\n\t 1- VERIFICAR CLASSE ELEITORAL";
+  cout << "\n\t 2- CALCULAR F(X)";
+  cout << "\n\t 3- VERIFICAR A SITUACAO DO ALUNO";
+  cout << "\n\t 4- INFORMAR TOTAL DA COMPRA";
+  cout << "\n\t 5- JOGO DA VELHA";
+  cout << "\n\t 6- SAIR\n";
+
+do{
+  cout << "\nescolha entre esses numeros para executar uma das operações(1-6): ";
+  cin >> escolha;
+
+  switch(escolha){
+    case 1:
+      cout << "\ndigite sua idade: ";
+      cin >> idade;
+        if(idade<16){
+          cout << "\nnao eleitor, nao pode votar";
+        }
+        if((idade>=16&&idade<=18)||(idade>=65)){
+          cout << "\neleitor facultativo";
+        }
+        if(idade>=18&&idade<65){
+          cout << "\neleitor obrigatorio";
+        }
+      break;
+    case 2:
+      cout << "\ndigite o valor de x: ";
+      cin >> x;
+      if(x<=1){
+        cout << "\n f(x) = 1";
+      }
+      if(x<1||x<=2){
+        cout << "\n f(x) = 2";
+      }
+      if(x>2&&x<=3){
+          calculo = (x*x);
+        cout << "\n f(x) = x^2 " << calculo;
+      }
+      if(x>3){
+                calculo = (x*x*x);
+        cout << "\n f(x) = x^3 " << calculo;
+      }
+      break;
+    case 3:
+      cout << "\ndigite a frequencia do aluno(0-100) ";
+      cin >> frequencia;
+      cout << "\ndigite a nota do aluno ";
+      cin >> nota;
+      if((frequencia>75)&&(nota>7)){
+        cout << "\naluno aprovado";
+      }else if((frequencia>75)&&(nota>=3&&nota<7)){
+        cout << "\naluno exame ";
+      }
+      if((frequencia>75)&&(nota<3)){
+        cout << "\nreprovado";
+      }
+      if(frequencia<75){
+        cout << "\nreprovado";
+      }
+      break;
+    
+    case 4:
+      cout << "\ndigite sua idade";
+      cin >> idade4;
+      cout << "digite seu genero(M ou F)";
+      cin >> sexo;
+      cout << "\ndigite o valor da compra ";
+      cin >> valorcompra;
+        
+      valortotal = valorcompra; 
+        
+      if(idade4 >= 60){
+        desconto = 0.25;
+        valortotal = valorcompra * (1 - desconto); 
+        if(sexo == 'f'){
+          desconto = 0.1;
+          valortotal = valortotal * (1 - desconto);
+      }
+        cout << "o valor total da compra foi " << valortotal;
+      } else if(sexo == 'f'){ 
+        desconto = 0.1;
+        valortotal = valorcompra * (1 - desconto); 
+        cout << "o valor total da compra foi " << valortotal;
+      } else {
+        cout << "\nsem desconto " << valortotal;
+      }
+      break;
+    case 5:
+      
+       cout << "JOGO DA VELHA\n\n";
+      
+    while (!gameover){
+        // exibir tabuleiro
+        cout << " " << pos1 << " | " << pos2 << " | " << pos3 << endl;
+        cout << "---|---|---\n";
+        cout << " " << pos4 << " | " << pos5 << " | " << pos6 << endl;
+        cout << "---|---|---\n";
+        cout << " " << pos7 << " | " << pos8 << " | " << pos9 << endl;
+
+        // solicitar jogada do jogador
+        cout << "\nJogador " << player << ", digite a posicao desejada: ";
+        char input;
+        cin >> input;
+
+        if(player=='x'){
+        player = 'o';
+        }else{
+          player = 'x';
+        }
+        // atualizar tabuleiro com jogada do jogador
+        if (input == '1') {
+            if (pos1 == '1') pos1 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '2') {
+            if (pos2 == '2') pos2 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '3') {
+            if (pos3 == '3') pos3 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '4') {
+            if (pos4 == '4') pos4 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '5') {
+            if (pos5 == '5') pos5 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '6') {
+            if (pos6 == '6') pos6 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '7') {
+            if (pos7 == '7') pos7 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '8') {
+            if (pos8 == '8') pos8 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else if (input == '9') {
+            if (pos9 == '9') pos9 = player;
+            else cout << "\nPosicao ja ocupada. Tente novamente.\n\n";
+        }
+        else {
+            cout << "\nEntrada invalida.";
+        }
+
+        if (pos1 == pos2 && pos2 == pos3) { // primeira linha
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos4 == pos5 && pos5 == pos6) { // segunda linha
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos7 == pos8 && pos8 == pos9) { // terceira linha
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos1 == pos4 && pos4 == pos7) { // primeira coluna
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos2 == pos5 && pos5 == pos8) { // segunda coluna
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos3 == pos6 && pos6 == pos9) { // terceira coluna
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos1 == pos5 && pos5 == pos9) { // diagonal principal
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }
+        else if (pos3 == pos5 && pos5 == pos7) { // diagonal secundária
+            cout << "\nJogador " << player << " venceu!\n\n";
+            gameover = true;
+        }else if (pos1 != '1' && pos2 != '2' && pos3 != '3' && pos4 != '4' && pos5 != '5' &&              pos6 != '6' && pos7 != '7' && pos8 != '8' && pos9 != '9') {
+            cout << "\nEmpate!\n\n";
+            gameover = true;
+        }
+        
+}
+        break;
+  //case 5 incompleto!
+  }
+    
+  }while(escolha!=6);
+
+  cout << "\nfim do programa";
+
+
+  
+}
