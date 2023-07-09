@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+/*
+23. Elabore um algoritmo que leia duas strings e informe se são iguais ou diferentes. Obs: Não utilize a função de 
+comparação de strings.
+*/
+
+int main() {
+  string um, dois;
+  
+
+  cout << "digite a frase:" << endl;
+  getline(cin,um);
+  cout << "digite a frase:" << endl;
+  getline(cin,dois);
+
+  if(um.compare(dois)==0){
+    cout << "sao iguais!" << endl;
+  }else if(um.compare(dois)!=0){
+      cout << "sao diferentes!";
+    }
+  
+
+}
