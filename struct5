@@ -1,0 +1,92 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*
+Elabore um algoritmo que defina um registro capaz de armazenar as seguintes informações
+sobre um determinado cliente de um banco: nome, CPF, RG, número da conta, data de
+abertura da conta e saldo. Em seguida manipule um vetor com 15 registros de clientes, onde
+cada registro é um elemento do tipo de dado definido. A manipulação do vetor é feita através
+das seguintes opções: cadastrar cliente, imprimir os dados de um determinado cliente com
+base no valor do campo CPF e imprimir todos os clientes com saldo negativo. 
+*/
+
+struct tcliente{
+  string nome;
+  int cpf;
+  int rg;
+  int nconta;
+  string data;
+  float saldo;
+
+};
+
+int main() {
+  tcliente cliente[15];
+  int i, qntd;
+  char opcao;
+
+  do{
+    cout << "\ndigite 'c' para cadastrar clientes, digite 'i' para imprimir dados do cliente, digite 'n' para imprimir clientes com saldo negativo ou 's' para sair!" << endl;
+    cin >> opcao;
+    
+    switch(opcao){
+      case 'c':   
+          do{
+            cout << "quantos clientes deseja cadastrar? " << endl;
+            cin >> qntd;
+          }while(qntd>15);
+            
+          for(i=0;i<qntd;i++){
+            getchar();
+            cout << "\n\tREGISTRO DO CLIENTE ";
+            cout << "\n\tinforme seu nome: ";
+            getline(cin,cliente[i].nome);
+            cout << "\n\tinforme seu cpf: ";
+            cin >> cliente[i].cpf;
+            getchar();
+            cout << "\n\tinforme seu rg: ";
+            cin >> cliente[i].rg;
+            cin.ignore();
+            cout << "\n\tinforme o numero da sua conta: ";
+            cin >> cliente[i].nconta;
+            cin.ignore();
+            cout <<"\n\tinforme a data de abertura da conta: ";
+            getline(cin,cliente[i].data);
+            cout << "\n\tinforme seu saldo: ";
+            cin >> cliente[i].saldo;
+            cin.ignore();
+          }
+        break;
+      case 'i':
+          for(i=0;i<qntd;i++){
+            cout << "\nnome: " << cliente[i].nome;
+            cout << "\ncp: " << cliente[i].cpf;
+            cout << "\nrg: " << cliente[i].rg;
+            cout << "\nnumero da conta " << cliente[i].nconta;
+            cout << "\ndata de abertura: " << cliente[i].data;
+            cout<< "\nsaldo: " << cliente[i].saldo;
+          }
+        break;
+      case 'n':
+        for(i=0;i<qntd;i++){
+          if(cliente[i].saldo<0.0){
+            cout << "\nCLIENTE COM SALDO NEGATIVO " << i+1;
+            cout << "\nnome: " << cliente[i].nome;
+            cout << "\ncp: " << cliente[i].cpf;
+            cout << "\nrg: " << cliente[i].rg;
+            cout << "\nnumero da conta " << cliente[i].nconta;
+            cout << "\ndata de abertura: " << cliente[i].data;
+            cout<< "\nsaldo: " << cliente[i].saldo;
+          }else{
+            cout << "\nnenhum cliente com saldo negativo!";
+          }
+        }
+        break;
+      case 's': cout << "\nsaindo...";
+    }
+  }while(opcao!='s');
+
+  cout << "\nfim do programa!";
+}
