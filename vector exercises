@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+//*Elabore um algoritmo que leia 20 elementos de um vetor de inteiros e, em seguida, um valor de código. Se o
+//código for 1, mostrar o vetor na ordem direta (do primeiro até o último), se o código for 2, //mostrar o vetor
+//na ordem inversa (do último até o primeiro). 
+
+int main(){
+  int A[20], i, codigo;
+
+  for(i=0;i<20;i++){
+    cout << "\ndigite o elemento " << i + 1 << ": ";
+    cin >> A[i];
+  }
+  cout << "\ndigite o valor do codigo(1 ou 2)";
+  cin >> codigo;
+  
+if(codigo==1){
+  for(i=0;i<20;i++){
+    cout << A[i] << " ";
+  }
+}else if(codigo==2){
+  for(i=19;i>=0; i--){
+    cout << A[i] << " ";
+  }
+}else{
+  cout << "\nvalor invalido";
+}
+
+cout << "\nfim do programa!";
+}
