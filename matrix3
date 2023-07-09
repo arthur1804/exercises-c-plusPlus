@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+11. Elabore um algoritmo que leia uma matriz MxN, verifique e escreva as coordenadas (linha e coluna) do maior 
+e do menor elementos.
+*/
+
+int main(){
+  int m, n, maior, menor, i, j, maiorLinha, maiorColuna, menorColuna, menorLinha;
+
+  cout << "\ndigite o valor de m: ";
+  cin >> m;
+
+  cout << "\ndigite o valor de n: ";
+  cin >> n;
+
+  int matriz[m][n];
+
+  for(i=0; i<m;i++){
+    for(j=0;j<n;j++){
+      cout << "\ndigite o elemento [" << i+1 << "][" << j+1 << "]: ";
+      cin >> matriz[i][j];
+   if (i == 0 && j == 0) {
+        maior = matriz[i][j];
+        menor = matriz[i][j];
+        maiorLinha = i;
+        maiorColuna = j;
+        menorLinha = i;
+        menorColuna = j;
+      } else {
+        if (matriz[i][j] > maior) {
+          maior = matriz[i][j];
+          maiorLinha = i;
+          maiorColuna = j;
+        }
+        if (matriz[i][j] < menor) {
+          menor = matriz[i][j];
+          menorLinha = i;
+          menorColuna = j;
+        }
+      }
+    }
+  }
+
+
+   cout << "Coordenadas do maior elemento: linha " << maiorLinha << ", coluna " << maiorColuna     << endl;
+  cout << "Coordenadas do menor elemento: linha " << menorLinha << ", coluna " << menorColuna     << endl;
+  
+}
