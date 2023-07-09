@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*
+Elabore um algoritmo que leia uma string, verifique e informe se trata-se ou não de um palíndromo.
+Lembrando que um palíndromo é uma palavra que tenha a propriedade de poder ser lida tanto da direita
+para a esquerda quanto da esquerda para a direita. Exemplos: ovo, arara, anotaram a data da maratona.
+*/
+int main() {
+  string frase, branco;
+  bool palindromo = true;
+
+  cout << "digite uma palavra ou frase: " << endl;
+  getline(cin,frase);
+
+  for(char c : frase){
+    if(c != ' '){
+      branco += c;
+    }
+  }
+
+  int i=0;
+  int j = branco.length() - 1;
+
+  while(i<j){
+    if(branco[i] != branco[j]){
+      palindromo = false;
+      break;
+    } 
+    i++;
+    j--;
+  }
+
+  if(palindromo){
+    cout << "a palavra digitada e um palindromo: " << frase << endl;
+  }else{
+    cout << "a palavra digitada nao e um palindromo" << endl;
+  }
+}
