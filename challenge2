@@ -1,0 +1,140 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+  int escolha, dias, mes, ano, acumulador, diamaior = -100000, anomaior= -10000, mesmaior = -10000, numero, N, qntfilhos, auxilio;
+  float hora1, minuto1, segundo1, hora2, minuto2, segundo2;
+  char parar, genero;
+  cout << "\n\t--------------";
+  cout << "\n\tMENU PRINCIPAL";
+  cout << "\n\t--------------";
+
+
+  cout << "\n\t1- MAIOR";
+  cout << "\n\t2- SIM OU NAO";
+  cout << "\n\t3- TEMPO";
+  cout << "\n\t4- VALIDAR";
+  cout << "\n\t5- CALCULAR";
+  cout << "\n\t6- SAIR";
+
+  do{
+  cout << "\nescolha de 1 a 6 de acordo com as opcoes apresentadas: ";
+  cin >> escolha;
+
+  switch(escolha){
+    case 1:  
+      do{
+      cout << "\ndigite um valor de dia ";
+      cin >> dias;
+      cout << "\ndigite o valor de mes ";
+      cin >> mes;
+      cout << "\ndigite o valor de ano ";
+      cin >> ano;
+      
+       if (dias >= 0 && mes >= 0 && ano >= 0) { // Verifica se todos os valores são não negativos
+        cout << "\ndia: "<< dias << " mes: " << mes << " ano: " << ano;
+
+        if (dias > diamaior) {
+            diamaior = dias;
+        }
+        if (mes > mesmaior) {
+            mesmaior = mes;
+        }
+        if (ano > anomaior) {
+            anomaior = ano;
+        }
+      }
+    } while (dias >= 0 || mes >= 0 || ano >= 0);
+
+      cout << "\no valor de dias, ano e mes maior foi: ";
+      cout << "\ndia: " << diamaior;
+      cout << "\nmes: " << mesmaior;
+      cout << "\nano: " << anomaior;
+      break;   
+    case 2: 
+      do{
+        cout << "\ndigite um numero inteiro ";
+        cin >> numero;
+
+        if((numero%2==0)&&(numero>10)){
+          cout << "\nSIM";
+        }else if((numero%3==0)&&(numero<50)){
+          cout << "\nSIM";
+        }else{
+          cout << "\nNAO";
+        }
+        
+        cout << "\ndeseja continuar? (s para parar) ";
+        cin >> parar;
+      }while(parar!='s');
+      break;
+    case 3:  
+      cout << "\ndigite o tempo de corrida do atleta 1: ";
+      cin >> hora1 >> minuto1 >> segundo1;
+      cout << "\ndigite o tempo de corrida do atleta 2 :";
+      cin >> hora2 >> minuto2 >> segundo2;
+
+      if (hora1 < hora2) {
+        cout << "\natleta 1 foi mais lento";
+      }else if (hora2 < hora1) {
+        cout << "\natleta 2 foi mais lento";
+      }else if (minuto1 < minuto2) {
+        cout << "\natleta 1 foi mais lento";
+      }else if (minuto2 < minuto1) {
+        cout << "\natleta 2 foi mais lento";
+      }else if (segundo1 < segundo2) {
+        cout << "\natleta 1 foi mais lento";
+      }else if (segundo2 < segundo1) {
+        cout << "\natleta 2 foi mais lento";
+      }else {
+        cout << "\nos atletas terminaram juntos";
+      }
+      break;
+    case 4: 
+      cout << "\ndigite o valor de N ";
+      cin >> N;
+
+      
+      
+      break; 
+    case 5: 
+      cout << "\nquantidade de filhos: ";
+      cin >> qntfilhos;
+      cout << "\nseu genero (m ou f) ";
+      cin >> genero;
+
+      if((genero == 'f') && (qntfilhos >=1)){
+        cout << "\ntem direito a auxilio";
+        switch(qntfilhos){
+          case 1: auxilio = 25.50;
+            cout << "\nauxilio total de " << auxilio;
+            break;
+          case 2:
+            auxilio = (25.50*qntfilhos);
+            cout << "\nauxilio total de " << auxilio;
+            break;
+          case 3: auxilio = (25.50*qntfilhos);
+            cout << "\nauxilio total de " << auxilio;
+            break;
+          case 4: auxilio = (25.50*qntfilhos)+15.0;
+            cout << "\nauxilio total de " << auxilio;
+            break;
+          default: 
+            auxilio += (25.50*qntfilhos)+15.0;
+            cout << "\nauxilio total de " << auxilio;     
+        }
+      }else{
+        cout << "\nnao tem direito a auxilio";
+      }
+     break;
+    case 6: cout << "Fim de programa!";
+      break;
+    default: cout << "numero desconhecido";
+  }   
+  }while(escolha!=6);
+
+
+
+
+  
+}
