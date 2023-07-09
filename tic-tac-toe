@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std; 
+
+int main(){
+  char jogo[3][3] =  { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} }, peca = 'x';
+  int cont = 0, jogada = -1, jogador = 1;
+  bool alguemganhou=false;
+  
+do{
+  cout << "\n\t" << jogo[0][0] << " | " << jogo[0][1] << " | " << jogo[0][2];  
+  cout << "\t\n----------------------------"; 
+  cout << "\n\t" << jogo[1][0] << " | " << jogo[1][1] << " | " << jogo[1][2];
+  cout << "\t\n----------------------------";
+  cout << "\n\t" << jogo[2][0] << " | " << jogo[2][1] << " | " << jogo[2][2];
+
+  do{
+  cout << "\njogador " << jogador << " faça sua jogada ";
+  cin >> jogada;
+  
+  switch(jogada){
+    case 1: jogo[0][0] = peca;
+      break;
+    case 2: jogo[0][1] = peca;
+      break;
+    case 3: jogo[0][2] = peca;
+      break;
+    case 4: jogo[1][0] = peca;
+      break;
+    case 5: jogo[1][1] = peca;
+      break;
+    case 6: jogo[1][2] = peca;
+      break;
+    case 7: jogo[2][0] = peca;
+      break;
+    case 8: jogo[2][1] = peca;
+      break;
+    case 9: jogo[2][2] = peca;
+      break;
+    default: cout << "\njogada invalida, tente novamente";
+    } 
+  }while((jogada<1) || (jogada>9));
+
+ if(((jogo[0][0] == jogo[0][1]) && (jogo[0][1] == jogo[0][2]) && jogo[0][0] != ' ') ||
+    ((jogo[1][0] == jogo[1][1]) && (jogo[1][1] == jogo[1][2]) && jogo[1][0] != ' ') ||
+    ((jogo[2][0] == jogo[2][1]) && (jogo[2][1] == jogo[2][2]) && jogo[2][0] != ' ') ||
+    ((jogo[0][0] == jogo[1][0]) && (jogo[1][0] == jogo[2][0]) && jogo[0][0] != ' ') ||
+    ((jogo[0][1] == jogo[1][1]) && (jogo[1][1] == jogo[2][1]) && jogo[0][1] != ' ') ||
+    ((jogo[0][2] == jogo[1][2]) && (jogo[1][2] == jogo[2][2]) && jogo[0][2] != ' ') ||
+    ((jogo[0][0] == jogo[1][1]) && (jogo[1][1] == jogo[2][2]) && jogo[0][0] != ' ') ||
+    ((jogo[0][2] == jogo[1][1]) && (jogo[1][1] == jogo[2][0]) && jogo[0][2] != ' ')){
+    alguemganhou = true;
+}else{
+      if(jogador==1){
+        jogador = 2;
+        peca = 'o';
+      }else{
+        jogador = 1;
+        peca = 'x';
+      }
+    } 
+  cont++;  
+}while((alguemganhou==false) && (cont<9));
+
+  system("cls");
+  cout << "\n\tTABULEIRO FINAL";  
+  
+  cout << "\n\t" << jogo[0][0] << " | " << jogo[0][1] << " | " << jogo[0][2];  
+  cout << "\t\n----------------------------"; 
+  cout << "\n\t" << jogo[1][0] << " | " << jogo[1][1] << " | " << jogo[1][2];
+  cout << "\t\n----------------------------";
+  cout << "\n\t" << jogo[2][0] << " | " << jogo[2][1] << " | " << jogo[2][2];
+
+  if((cont == 9)&&(alguemganhou == false)){
+    cout << "\nDEU VELHA!";
+  }else{
+    cout << "\nhouve um ganhador";
+    cout << "\nquem ganhou foi o jogador " << jogador;
+  }
+  cout << "\nfim do programa";
+}
