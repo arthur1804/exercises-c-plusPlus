@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+/*
+Elabore um algoritmo que leia os elementos inteiros positivos de uma matriz 3x3 de tal forma que os números pares sejam armazenados somente em linhas pares e os números ímpares sejam armazenados somente em linha ímpares. Quando não houver mais espaço para armazenar o número lido (par ou ímpar), o algoritmo deverá inforrmar e continuar pedindo novos números até que a matriz esteja preenchida. Ao final escreva a
+matriz.
+*/
+
+int main(){
+ int m[3][3], i, j, par=0, impar=0;
+
+ for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      cout << "Informe o elemento [" << i + 1 << "][" << j + 1 << "]: ";
+      cin >> m[i][j];
+
+  if (m[i][j] % 2 == 0 && i % 2 == 0) { // Número par em linha par
+        m[i][j] = m[i][j]; // Armazena o próprio número par
+        par++;
+  } else if (m[i][j] % 2 != 0 && i % 2 != 0) { // Número ímpar em linha ímpar
+        m[i][j] = m[i][j]; // Armazena o próprio número ímpar
+        impar++;
+  } else { // Caso contrário, o número não se encaixa nas regras
+        cout << "Número inválido! Insira novamente." << endl;
+        j--; // Decrementa j para repetir a entrada do número atual
+  }
+    }
+ }
+      
+ if(par+impar == 9){
+   cout << "\nmatriz completamente preenchida!";
+for(i=0;i<3;i++){
+  for(j=0;j<3;j++){
+    cout << "\t" <<  m[i][j];
+  }
+  cout << "\n";
+}
+ }
+  
+}
