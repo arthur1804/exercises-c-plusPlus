@@ -1,0 +1,116 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+int escolha, hora, minuto, segundo, maiorHora = 0, maiorMinuto = 0, maiorSegundo = 0, N, dia, N2, mes, ano, dia2, mes2, ano2, dia3, mes3, ano3, idade;
+char continuar, cliente;
+float valor, desconto;
+  
+do{
+cout << "\n\t------------";
+cout << "\n\tMENU PRINCIPAL";
+cout << "\n\t------------";
+
+cout << "\n\t1- MAIOR";
+cout << "\n\t2- SIM OU NAO";
+cout << "\n\t3- TEMPO";
+cout << "\n\t4- VALIDAR";
+cout << "\n\t5- CALCULAR";
+cout << "\n\t6- SAIR";
+
+cout << "\n\t------------";
+
+  cout << "\ninforme sua escolha de acordo com o menu apresentado ";
+  cin >> escolha;
+
+  switch(escolha){
+    case 1:
+      do {
+          cout << "\nDigite um horário (hh:mm:ss): ";
+          cin >> hora >> minuto >> segundo;
+        if (hora >= 0 && minuto >= 0 && segundo >= 0 && 
+            (hora > maiorHora || (hora == maiorHora && minuto > maiorMinuto) || (hora ==     maiorHora && minuto == maiorMinuto && segundo > maiorSegundo))) {
+            maiorHora = hora;
+            maiorMinuto = minuto;
+            maiorSegundo = segundo;
+        }        
+      } while (hora >= 0 && minuto >= 0 && segundo >= 0);
+
+        cout << "\nMaior horário digitado: " << maiorHora << ":" << maiorMinuto << ":" << maiorSegundo << endl;
+      break;
+    case 2: cout << "a";
+      do{
+        cout << "\ndigite um numero inteiro ";
+        cin >> N;
+
+        if((N % 7 == 0 && N>=35)||((N % 2 == 0 && N<55))){
+          cout << "\nSIM";
+        }else{
+          cout << "\nNAO";
+        }
+        
+        cout << "\ndeseja continuar? (n para nao e s para sim) ";
+        cin >> continuar;
+      }while(continuar=='s');
+      break;
+    case 3: 
+        cout << "\ndigite a data atual(dia, mes ano) ";
+        cin >> dia >> mes >> ano;
+  
+        cout << "\ninforme a data de nascimento da pessoa 1 ";
+        cin >> dia2 >> mes2 >> ano2;
+  
+        cout << "\ndata de nascimento da pessoa 2 ";
+        cin >> dia3 >> mes3 >> ano3;
+
+       if(dia2 < dia3 && mes2 < mes3 && ano2 < ano3){
+         cout << "\npessoa 1 e mais nova";
+       }else{
+         cout << "\npessoa 2 e mais nova";
+       }
+      break;
+    case 4:
+      cout << "\ndigite o valor de N";
+      cin >> N2;
+      // nao entendi a questao
+      break;
+    case 5:
+      cout << "\ninforme o tipo do cliente(n - normal, e - especial) ";
+      cin >> cliente;
+      cout << "\ninforme a idade ";
+      cin >> idade;
+      cout << "\ninforme o valor a pagar ";
+      cin >> valor;
+      
+      switch(cliente) {
+          case 'n':
+              if(idade > 60) {
+                  desconto = 0.02;
+                  valor = (valor * (1 - desconto));
+              } else if(idade < 60) {
+                  desconto = 0.1;
+                  valor = (valor * (1 - desconto));
+              }
+              cout << "\nO valor a ser pago com desconto sera de " << valor;
+              break;
+          case 'e':
+              if(idade > 60) {
+                  desconto = 0.02 + 0.2;
+                  valor = (valor * (1 - desconto));
+              } else {
+                  desconto = 0.2;
+                  valor = (valor * (1 - desconto));
+              }
+              cout << "\nO valor a ser pago com desconto sera de " << valor;
+              break;
+          default:
+              cout << "\nValor inserido invalido";
+      }    
+      break;
+    case 6:cout << "fim de programa! ";
+      break;
+    default: cout << "\nescolha invalida, tente novamente ";  
+  }
+  
+}while(escolha!=6);
+}
