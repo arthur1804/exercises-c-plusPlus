@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+/*Escreva um programa que leia números 10 inteiros, armazene-os em um vetor e 
+os escreva na ordem contrária à de leitura. Obs: todos os acessos ao vetor devem ser 
+feitos usando somente ponteiros, sem usar os índices. */
+
+int main(){
+    const int tamanho = 10;
+    int i, p[tamanho];
+
+    for(i = 0; i < tamanho; i++){
+    cout << "\ndigite um numero: ";
+    cin >> *(p+i);
+    }
+
+    cout << "Números digitados (ordem contrária): ";
+    for(i = tamanho - 1; i >=0; i--){
+        cout << *(p + i) << " ";
+    }
+
+}
